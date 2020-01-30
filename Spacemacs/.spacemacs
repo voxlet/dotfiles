@@ -32,26 +32,30 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(yaml
+     typescript
+     (clojure :variables
+              clojure-enable-linters 'clj-kondo)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      emacs-lisp
      ;; git
-     helm
-     ;; lsp
-     ;; markdown
+     ivy
+     lsp
+     markdown
      multiple-cursors
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     org
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom
+            shell-default-shell 'multi-term)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      treemacs
      ;; version-control
      )
@@ -63,7 +67,10 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(doom-themes
+                                      centaur-tabs
+                                      super-save
+                                      paren-face)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -151,7 +158,7 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -188,7 +195,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(doom-one-light
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -205,8 +212,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+   dotspacemacs-default-font '("Source Code Pro for Powerline"
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -358,7 +365,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -366,17 +373,17 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
 
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters nil
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
@@ -426,7 +433,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
@@ -466,7 +473,116 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (when (fboundp 'global-so-long-mode)
+    (global-so-long-mode 1))
+
+  (setq-default evil-escape-key-sequence "kj")
+
+  (setq dired-dwim-target t)
+
+  (setq scroll-error-top-bottom t
+        scroll-preserve-screen-position t)
+
+  (spacemacs/toggle-highlight-current-line-globally-off)
+
+  (global-set-key (kbd "C-z") 'undo)
+
+  (delete-selection-mode 1)
+
+  (use-package super-save
+    :config
+    (super-save-mode +1)
+    (spacemacs|diminish super-save-mode " 𝕊" " ss"))
+
+  (use-package centaur-tabs
+    :demand
+    :custom
+    (centaur-tabs-style 'bar)
+    (centaur-tabs-height 24)
+    (centaur-tabs-set-icons t)
+    (centaur-tabs-set-bar 'over)
+    (centaur-tabs-set-close-button nil)
+    (centaur-tabs-set-modified-marker t)
+    (centaur-tabs-modified-marker "● ")
+    (centaur-tabs-adjust-buffer-order t)
+    :custom-face
+    (centaur-tabs-default ((t (:inherit 'variable-pitch))))
+    (centaur-tabs-selected ((t (:inherit 'variable-pitch))))
+    (centaur-tabs-unselected ((t (:inherit 'variable-pitch :foreground "grey50"))))
+    (centaur-tabs-selected-modified ((t (:inherit 'variable-pitch))))
+    (centaur-tabs-unselected-modified ((t (:inherit 'variable-pitch))))
+    :bind
+    ("C-S-<tab>" . centaur-tabs-backward)
+    ("C-S-<iso-lefttab>" . centaur-tabs-backward)
+    ("s-{" . centaur-tabs-backward)
+    ("C-<tab>" . centaur-tabs-forward)
+    ("s-}" . centaur-tabs-forward)
+    :hook
+    (dashboard-mode . centaur-tabs-local-mode)
+    :config
+    (centaur-tabs-mode t)
+    (centaur-tabs-enable-buffer-reordering)
+    (centaur-tabs-group-by-projectile-project))
+
+  (use-package view
+    :bind
+    ("<prior>" . View-scroll-half-page-backward)
+    ("<next>" . View-scroll-half-page-forward))
+
+  (use-package paren-face
+    :custom (paren-face-regexp "[][{}()]")
+    :config (global-paren-face-mode))
+
+  (use-package aggressive-indent
+    :config (global-aggressive-indent-mode 1))
+
+  (use-package hungry-delete
+    :config
+    (global-hungry-delete-mode)
+    (spacemacs|diminish hungry-delete-mode " ⓗ" " h"))
+
+  (use-package smartparens
+    :config
+    (set-face-background 'sp-show-pair-match-face nil)
+
+    :bind
+    ("C-<right>" . sp-forward-slurp-sexp)
+    ("C-<left>" . sp-forward-barf-sexp))
+
+  (use-package expand-region
+    :bind
+    ("M-S-<up>" . 'er/expand-region)
+    ("M-S-<down>" . 'er/contract-region))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     '(yaml-mode wgrep smex ivy-yasnippet ivy-xref ivy-purpose ivy-hydra counsel-projectile counsel swiper ivy web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc flycheck-clj-kondo company-tern tern web-mode tide typescript-mode import-js grizzl emmet-mode add-node-modules-path super-save paren-face yasnippet-snippets xterm-color vterm unfill terminal-here shell-pop org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain org-ql peg ov org-super-agenda ts mwim multi-term mmm-mode markdown-toc lsp-ui lsp-treemacs htmlize helm-org-rifle helm-org helm-lsp helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip evil-org eshell-z eshell-prompt-extras esh-help doom-themes company-statistics company-lsp lsp-mode markdown-mode dash-functional company clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-persp treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(safe-local-variable-values
+     '((cider-lein-parameters . "with-profile +etl,+dev-ui,+ui repl :headless :host localhost")
+       (typescript-backend . tide)
+       (typescript-backend . lsp)
+       (javascript-backend . tern)
+       (javascript-backend . lsp))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(centaur-tabs-default ((t (:inherit 'variable-pitch))))
+   '(centaur-tabs-selected ((t (:inherit 'variable-pitch))))
+   '(centaur-tabs-selected-modified ((t (:inherit 'variable-pitch))))
+   '(centaur-tabs-unselected ((t (:inherit 'variable-pitch :foreground "grey50"))))
+   '(centaur-tabs-unselected-modified ((t (:inherit 'variable-pitch)))))
+  )
