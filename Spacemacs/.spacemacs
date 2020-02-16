@@ -36,6 +36,8 @@ This function should only modify configuration layer settings."
      typescript
      (clojure :variables
               clojure-enable-linters 'clj-kondo)
+     (rust :variables
+           rust-format-on-save t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -553,6 +555,12 @@ before packages are loaded."
     :bind
     ("M-S-<up>" . 'er/expand-region)
     ("M-S-<down>" . 'er/contract-region))
+
+  (cond ((eq system-type 'windows-nt)
+         (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
+         (setenv "PATH" (mapconcat #'identity exec-path path-separator))
+         (use-package projectile
+           :config (setq projectile-indexing-method 'alien))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -586,3 +594,16 @@ This function is called at the very end of Spacemacs initialization."
    '(centaur-tabs-unselected ((t (:inherit 'variable-pitch :foreground "grey50"))))
    '(centaur-tabs-unselected-modified ((t (:inherit 'variable-pitch)))))
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(toml-mode racer flycheck-rust cargo rust-mode yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tide typescript-mode super-save spaceline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paren-face paradox org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish define-word counsel-projectile projectile counsel swiper ivy company-statistics company column-enforce-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman spinner queue pkg-info parseedn clojure-mode parseclj a epl centaur-tabs powerline bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup doom-themes)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
