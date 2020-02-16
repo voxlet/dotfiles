@@ -72,7 +72,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(doom-themes
                                       centaur-tabs
                                       super-save
-                                      paren-face)
+                                      paren-face
+                                      all-the-icons)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -207,7 +208,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme 'doom
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -496,6 +497,13 @@ before packages are loaded."
     (super-save-mode +1)
     (spacemacs|diminish super-save-mode " 𝕊" " ss"))
 
+  (use-package doom-modeline
+    :custom-face
+    (mode-line ((t (:height 0.9))))
+    (mode-line-inactive ((t (:height 0.9))))
+    :custom
+    (doom-modeline-height 1))
+
   (use-package centaur-tabs
     :demand
     :custom
@@ -576,7 +584,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(yaml-mode wgrep smex ivy-yasnippet ivy-xref ivy-purpose ivy-hydra counsel-projectile counsel swiper ivy web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc flycheck-clj-kondo company-tern tern web-mode tide typescript-mode import-js grizzl emmet-mode add-node-modules-path super-save paren-face yasnippet-snippets xterm-color vterm unfill terminal-here shell-pop org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain org-ql peg ov org-super-agenda ts mwim multi-term mmm-mode markdown-toc lsp-ui lsp-treemacs htmlize helm-org-rifle helm-org helm-lsp helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip evil-org eshell-z eshell-prompt-extras esh-help doom-themes company-statistics company-lsp lsp-mode markdown-mode dash-functional company clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-persp treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+     '(shrink-path yaml-mode wgrep smex ivy-yasnippet ivy-xref ivy-purpose ivy-hydra counsel-projectile counsel swiper ivy web-beautify prettier-js nodejs-repl livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc flycheck-clj-kondo company-tern tern web-mode tide typescript-mode import-js grizzl emmet-mode add-node-modules-path super-save paren-face yasnippet-snippets xterm-color vterm unfill terminal-here shell-pop org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain org-ql peg ov org-super-agenda ts mwim multi-term mmm-mode markdown-toc lsp-ui lsp-treemacs htmlize helm-org-rifle helm-org helm-lsp helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip evil-org eshell-z eshell-prompt-extras esh-help doom-themes company-statistics company-lsp lsp-mode markdown-mode dash-functional company clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-persp treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
    '(safe-local-variable-values
      '((cider-lein-parameters . "with-profile +etl,+dev-ui,+ui repl :headless :host localhost")
        (typescript-backend . tide)
@@ -594,16 +602,3 @@ This function is called at the very end of Spacemacs initialization."
    '(centaur-tabs-unselected ((t (:inherit 'variable-pitch :foreground "grey50"))))
    '(centaur-tabs-unselected-modified ((t (:inherit 'variable-pitch)))))
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(toml-mode racer flycheck-rust cargo rust-mode yaml-mode xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tide typescript-mode super-save spaceline smex shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paren-face paradox org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc markdown-mode macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish define-word counsel-projectile projectile counsel swiper ivy company-statistics company column-enforce-mode clojure-snippets clj-refactor hydra inflections edn multiple-cursors paredit peg lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman spinner queue pkg-info parseedn clojure-mode parseclj a epl centaur-tabs powerline bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup doom-themes)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
