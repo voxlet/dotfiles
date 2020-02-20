@@ -46,7 +46,7 @@ This function should only modify configuration layer settings."
      auto-completion
      better-defaults
      emacs-lisp
-     ;; git
+     git
      ivy
      lsp
      markdown
@@ -461,7 +461,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  )
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+  (load custom-file))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -469,6 +470,13 @@ This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
   )
+
+(defun voxlet/swiper-isearch ()
+  "Use swiper-isearch-thing-at-point, but only if we have a region."
+  (interactive)
+  (if (region-active-p)
+      (swiper-isearch-thing-at-point)
+    (swiper-isearch)))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -547,6 +555,22 @@ before packages are loaded."
     :custom (paren-face-regexp "[][{}()]")
     :config (global-paren-face-mode))
 
+  (use-package ivy
+    :custom
+    (ivy-re-builders-alist '((swiper-isearch . ivy--regex-plus)
+                             (t . ivy--regex-fuzzy)))
+    :bind
+    ("C-r" . ivy-resume)
+    ("C-x B" . ivy-switch-buffer-other-window))
+
+  (use-package swiper
+    :after ivy
+    :bind ("C-s" . voxlet/swiper-isearch))
+
+  (use-package avy
+    :custom (avy-timout-seconds 0.15)
+    :bind ("C-;" . avy-goto-char-timer))
+
   (use-package aggressive-indent
     :config (global-aggressive-indent-mode 1))
 
@@ -573,13 +597,4 @@ before packages are loaded."
          (setenv "PATH" (mapconcat #'identity exec-path path-separator))
          (use-package projectile
            :config (setq projectile-indexing-method 'alien))))
-  )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
   )
