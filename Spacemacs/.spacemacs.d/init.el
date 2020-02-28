@@ -35,7 +35,8 @@ This function should only modify configuration layer settings."
    '(yaml
      typescript
      (clojure :variables
-              clojure-enable-linters 'clj-kondo)
+              clojure-enable-linters 'clj-kondo
+              clojure-enable-clj-refactor t)
      (rust :variables
            rust-format-on-save t)
      ;; ----------------------------------------------------------------
@@ -567,6 +568,11 @@ before packages are loaded."
     :after ivy
     :bind ("C-s" . voxlet/swiper-isearch))
 
+  (use-package lsp-ui
+    :custom
+    (lsp-ui-doc-position 'top)
+    (lsp-ui-doc-use-childframe t))
+
   (use-package avy
     :custom (avy-timout-seconds 0.15)
     :bind ("C-;" . avy-goto-char-timer))
@@ -597,4 +603,9 @@ before packages are loaded."
          (setenv "PATH" (mapconcat #'identity exec-path path-separator))
          (use-package projectile
            :config (setq projectile-indexing-method 'alien))))
+
+  (use-package cider
+    :custom
+    (cider-print-fn 'fipp)
+    (cider-print-options '(("print-length" 100))))
   )
