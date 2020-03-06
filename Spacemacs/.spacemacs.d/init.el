@@ -39,6 +39,12 @@ This function should only modify configuration layer settings."
               clojure-enable-clj-refactor t)
      (rust :variables
            rust-format-on-save t)
+     (python :variables
+             python-backend 'anaconda
+             python-pipenv-activate t
+             python-format-on-save t
+             python-sort-imports-on-save t
+             python-formatter 'black)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -493,6 +499,8 @@ before packages are loaded."
   (spacemacs/set-leader-keys
     "," 'evil-jump-backward
     "." 'evil-jump-forward)
+  (define-key evil-hybrid-state-map (kbd "C-,") 'evil-jump-backward)
+  (define-key evil-hybrid-state-map (kbd "C-.") 'evil-jump-forward)
 
   (setq dired-dwim-target t)
 
@@ -501,7 +509,9 @@ before packages are loaded."
 
   (spacemacs/toggle-highlight-current-line-globally-off)
 
-  (global-set-key (kbd "C-z") 'undo)
+  (global-set-key (kbd "C-z") 'undo-tree-undo)
+  (global-set-key (kbd "C-S-Z") 'undo-tree-redo)
+  (global-set-key (kbd "s-Z") 'undo-tree-redo)
 
   (delete-selection-mode 1)
 
