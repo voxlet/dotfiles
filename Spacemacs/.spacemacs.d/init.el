@@ -33,7 +33,11 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(yaml
-     typescript
+     prettier
+     (typescript :variables
+                 typescript-backend 'tide
+                 typescript-fmt-tool 'prettier
+                 typescript-fmt-on-save t)
      (clojure :variables
               clojure-enable-linters 'clj-kondo
               clojure-enable-clj-refactor t)
@@ -45,6 +49,8 @@ This function should only modify configuration layer settings."
              python-format-on-save t
              python-sort-imports-on-save t
              python-formatter 'black)
+     (osx :variables
+          osx-command-as 'super)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -54,7 +60,11 @@ This function should only modify configuration layer settings."
      better-defaults
      emacs-lisp
      git
-     ivy
+     (ivy :variables
+          ivy-re-builders-alist '((swiper-isearch . spacemacs/ivy--regex-plus)
+                                  ('spacemacs/counsel-search . spacemacs/ivy--regex-plus)
+                                  (counsel-rg . spacemacs/ivy--regex-plus)
+                                  (t . ivy--regex-fuzzy)))
      lsp
      markdown
      multiple-cursors
@@ -65,7 +75,7 @@ This function should only modify configuration layer settings."
             shell-default-shell 'multi-term)
      ;; spell-checking
      syntax-checking
-     treemacs
+     ;; treemacs
      ;; version-control
      )
 
@@ -508,6 +518,13 @@ before packages are loaded."
         scroll-preserve-screen-position t)
 
   (spacemacs/toggle-highlight-current-line-globally-off)
+  (spacemacs/toggle-aggressive-indent-globally-on)
+  (spacemacs/toggle-highlight-long-lines-globally-on)
+  (spacemacs/toggle-highlight-indentation-current-column-on)
+  (spacemacs/toggle-visual-line-navigation-globally-on)
+  (spacemacs/toggle-smartparens-globally-on)
+
+  (setq-default dotspacemacs-smartparens-strict-mode t)
 
   (global-set-key (kbd "C-z") 'undo-tree-undo)
   (global-set-key (kbd "C-S-Z") 'undo-tree-redo)
@@ -567,9 +584,6 @@ before packages are loaded."
     :config (global-paren-face-mode))
 
   (use-package ivy
-    :custom
-    (ivy-re-builders-alist '((swiper-isearch . ivy--regex-plus)
-                             (t . ivy--regex-fuzzy)))
     :bind
     ("C-r" . ivy-resume)
     ("C-x B" . ivy-switch-buffer-other-window))
@@ -578,17 +592,17 @@ before packages are loaded."
     :after ivy
     :bind ("C-s" . voxlet/swiper-isearch))
 
-  (use-package lsp-ui
-    :custom
-    (lsp-ui-doc-position 'top)
-    (lsp-ui-doc-use-childframe t))
+  ;; (use-package lsp-ui
+  ;;   :custom
+  ;;   (lsp-ui-doc-position 'top)
+  ;;   (lsp-ui-doc-use-childframe t))
 
   (use-package avy
     :custom (avy-timout-seconds 0.15)
     :bind ("C-;" . avy-goto-char-timer))
 
-  (use-package aggressive-indent
-    :config (global-aggressive-indent-mode 1))
+  (use-package evil
+    :config (fset 'evil-visual-update-x-selection 'ignore))
 
   (use-package hungry-delete
     :config
@@ -618,4 +632,10 @@ before packages are loaded."
     :custom
     (cider-print-fn 'fipp)
     (cider-print-options '(("print-length" 100))))
+
+  (use-package typescript-mode
+    :custom (typescript-indent-level 2))
+
+  (use-package js
+    :custom (js-indent-level 2))
   )
