@@ -97,7 +97,13 @@
                         "description": "META Layer",
                         "manipulators": [
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
@@ -111,16 +117,16 @@
                                         "key_code": "up_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
@@ -134,16 +140,16 @@
                                         "key_code": "left_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
@@ -157,16 +163,16 @@
                                         "key_code": "down_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
@@ -180,16 +186,16 @@
                                         "key_code": "right_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "y",
                                     "modifiers": {
@@ -203,16 +209,16 @@
                                         "key_code": "page_up"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
@@ -226,16 +232,16 @@
                                         "key_code": "page_down"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -249,16 +255,16 @@
                                         "key_code": "home"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
@@ -272,16 +278,16 @@
                                         "key_code": "end"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": {
@@ -293,19 +299,22 @@
                                 "to": [
                                     {
                                         "key_code": "open_bracket",
-                                        "modifiers": ["right_shift", "right_gui"]
+                                        "modifiers": [
+                                            "right_shift",
+                                            "right_gui"
+                                        ]
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
@@ -317,19 +326,22 @@
                                 "to": [
                                     {
                                         "key_code": "close_bracket",
-                                        "modifiers": ["right_shift", "right_gui"]
+                                        "modifiers": [
+                                            "right_shift",
+                                            "right_gui"
+                                        ]
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
@@ -343,16 +355,16 @@
                                         "key_code": "return_or_enter"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
@@ -366,16 +378,16 @@
                                         "key_code": "tab"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
@@ -387,19 +399,21 @@
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde",
-                                        "modifiers": ["left_alt"]
+                                        "modifiers": [
+                                            "left_alt"
+                                        ]
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_right_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "slash",
                                     "modifiers": {
@@ -413,13 +427,7 @@
                                         "key_code": "escape"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_right_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             }
                         ]
                     },
@@ -427,7 +435,13 @@
                         "description": "SYMB Layer",
                         "manipulators": [
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "q",
                                     "modifiers": {
@@ -441,16 +455,16 @@
                                         "key_code": "1"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
@@ -464,16 +478,16 @@
                                         "key_code": "2"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
@@ -487,16 +501,16 @@
                                         "key_code": "3"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": {
@@ -510,16 +524,16 @@
                                         "key_code": "4"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
@@ -533,16 +547,16 @@
                                         "key_code": "5"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "y",
                                     "modifiers": {
@@ -556,16 +570,16 @@
                                         "key_code": "6"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": {
@@ -579,16 +593,16 @@
                                         "key_code": "7"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
@@ -602,16 +616,16 @@
                                         "key_code": "8"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
@@ -625,16 +639,16 @@
                                         "key_code": "9"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -648,16 +662,16 @@
                                         "key_code": "0"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
@@ -671,16 +685,16 @@
                                         "key_code": "hyphen"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                                   "type": "variable_unless",
-                                                   "name": "multitouch_extension_finger_count_left_half_area",
-                                                   "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
@@ -694,16 +708,16 @@
                                         "key_code": "equal_sign"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
@@ -717,16 +731,16 @@
                                         "key_code": "open_bracket"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
@@ -740,16 +754,16 @@
                                         "key_code": "close_bracket"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
@@ -763,16 +777,16 @@
                                         "key_code": "quote"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
@@ -786,16 +800,16 @@
                                         "key_code": "grave_accent_and_tilde"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "multitouch_extension_finger_count_left_half_area",
+                                        "type": "variable_unless",
+                                        "value": 0
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "slash",
                                     "modifiers": {
@@ -809,19 +823,27 @@
                                         "key_code": "backslash"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_unless",
-                                        "name": "multitouch_extension_finger_count_left_half_area",
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 12384,
+                        "vendor_id": 65261
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {
