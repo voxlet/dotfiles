@@ -7,44 +7,36 @@ setopt no_beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+setopt bang_hist hist_fcntl_lock hist_ignore_dups hist_ignore_space \
+       hist_lex_words hist_reduce_blanks share_history
+
 ### Added by Zplugin's installer
-source "${HOME}/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source "${HOME}/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zplugin's installer chunk
 
-urlencode() {
-    setopt localoptions extendedglob
-    input=( ${(s::)1} )
-    esc=${(j::)input/(#b)([^A-Za-z0-9_.\!~*\'\(\)-\/])/%${(l:2::0:)$(([##16]#match))}}
-    print ${esc// /%20}
-}
+zinit ice wait blockf
+zinit light zsh-users/zsh-completions
 
-function precmd () {
-    local URL_PATH="$(urlencode ${PWD})"
-    [[ $? != 0 ]] && return 1
-    printf '\e]7;%s\a' "file://${HOST}${URL_PATH}"
-}
+zinit ice wait atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
 
-zplugin ice wait"0" blockf
-zplugin light zsh-users/zsh-completions
-
-zplugin ice wait"0" atload"_zsh_autosuggest_start"
-zplugin light zsh-users/zsh-autosuggestions
-
-# zplugin ice wait"0"
-# zplugin load agkozak/agkozak-zsh-prompt
-# AGKOZAK_MULTILINE=0
-# AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' )
-
-zplugin ice wait"0"
-zplugin light zsh-users/zsh-history-substring-search
+zinit ice wait
+zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+zinit ice wait
+zinit light zdharma/history-search-multi-word
+
 zstyle :compinstall filename "${HOME}/.zshrc"
-zplugin ice wait"2" atinit"zpcompinit; zpcdreplay"
-zplugin light zdharma/fast-syntax-highlighting
+zinit ice wait"1" atinit"zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+export NVM_AUTO_USE=true
+zinit ice wait
+zinit light lukechilds/zsh-nvm
 
 alias ls='ls -G'
 
