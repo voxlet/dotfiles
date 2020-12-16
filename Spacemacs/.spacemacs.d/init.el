@@ -65,7 +65,9 @@ This function should only modify configuration layer settings."
                                   ('spacemacs/counsel-search . spacemacs/ivy--regex-plus)
                                   (counsel-rg . spacemacs/ivy--regex-plus)
                                   (t . ivy--regex-fuzzy)))
-     lsp
+     (lsp :variables
+          lsp-ui-remap-xref-keybindings	t
+          lsp-ui-sideline-show-symbol t)
      markdown
      multiple-cursors
      org
@@ -256,8 +258,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m")
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; Thus M-RET should work as leader key in both GUI and terminal modes.
+   ;; C-M-m also should work in terminal mode, but not in GUI mode.
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -403,7 +407,7 @@ It should only modify the values of Spacemacs settings."
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters nil
+   dotspacemacs-highlight-delimiters 'current
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
@@ -455,6 +459,13 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'changed
 
+   ;; If non nil activate `clean-aindent-mode' which tries to correct
+   ;; virtual indentation of simple modes. This can interfer with mode specific
+   ;; indent handling like has been reported for `go-mode'.
+   ;; If it does deactivate it here.
+   ;; (default t)
+   dotspacemacs-use-clean-aindent-mode t
+
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
@@ -494,6 +505,9 @@ dump."
   (if (region-active-p)
       (swiper-isearch-thing-at-point)
     (swiper-isearch)))
+
+(defun voxlet/eldoc-mode ()
+  (eldoc-mode +1))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -634,7 +648,8 @@ before packages are loaded."
     (cider-print-options '(("print-length" 100))))
 
   (use-package typescript-mode
-    :custom (typescript-indent-level 2))
+    :custom (typescript-indent-level 2)
+    :hook (voxlet/eldoc-mode))
 
   (use-package js
     :custom (js-indent-level 2))
