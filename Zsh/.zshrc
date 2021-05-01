@@ -16,28 +16,33 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zplugin's installer chunk
 
-zinit ice wait blockf
+zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)'
+zinit light starship/starship
+
+zinit ice wait lucid atload"zicompinit; zicdreplay" blockf
 zinit light zsh-users/zsh-completions
 
-zinit ice wait atload"_zsh_autosuggest_start"
+zinit ice wait lucid atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait
+zinit ice wait lucid
 zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-zinit ice wait
+zinit ice wait lucid
 zinit light zdharma/history-search-multi-word
 
 zstyle :compinstall filename "${HOME}/.zshrc"
-zinit ice wait"1" atinit"zpcompinit; zpcdreplay"
+zinit ice wait lucid atinit"zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
 export NVM_AUTO_USE=true
-zinit ice wait
+zinit ice wait lucid
 zinit light lukechilds/zsh-nvm
+
+zinit creinstall -q %HOME/.zfunc
 
 alias ls='ls -G'
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
