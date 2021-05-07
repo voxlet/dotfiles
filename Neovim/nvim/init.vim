@@ -1,6 +1,7 @@
 :set tabstop=2
 :set shiftwidth=2
 :set expandtab
+:set selection=exclusive
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'justinmk/vim-sneak'
